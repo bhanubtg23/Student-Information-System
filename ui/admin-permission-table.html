@@ -1,0 +1,43 @@
+<html>
+<head>
+    <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+.button {
+  background-color: white;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border: 2px solid #e7e7e7;
+}
+</style>
+    <title> Person Information </title>
+    <meta charset="UTF-8">
+    <script src="js/mongo/grant-permission.js"></script>
+    <script src="js/mongo/download-table.js"></script>
+</head>
+<div id="datatable"> </div>
+
+<br>
+<button type="button" class="button" onclick="download_table_as_csv('personinfo');" class="btn btn-default btn-block">Export Table</button>
+<body>
+</body>
+</html>
