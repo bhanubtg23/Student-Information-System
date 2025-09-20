@@ -1,0 +1,28 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: auth
+          uri: http://auth-service:8081
+          predicates: [ Path=/auth/** ]
+        - id: students
+          uri: http://student-service:8082
+          predicates: [ Path=/students/** ]
+        - id: faculty
+          uri: http://faculty-service:8084
+          predicates: [ Path=/faculty/** ]
+        - id: passes
+          uri: http://pass-service:8083
+          predicates: [ Path=/passes/** ]
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery:8761/eureka/
+security:
+  jwt:
+    secret: ${JWT_SECRET:dev-local-secret}
+management.endpoints.web.exposure.include: "*"

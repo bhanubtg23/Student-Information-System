@@ -1,0 +1,28 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: pass-service
+  datasource:
+    url: jdbc:postgresql://postgres:5432/sis
+    username: ${POSTGRES_USER:sisuser}
+    password: ${POSTGRES_PASSWORD:sispass}
+  jpa:
+    hibernate:
+      ddl-auto: update
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery:8761/eureka/
+springdoc:
+  swagger-ui.path: /swagger-ui.html
+security:
+  jwt:
+    secret: ${JWT_SECRET:dev-local-secret}
+resilience4j:
+  circuitbreaker:
+    instances:
+      db:
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 10
+        failureRateThreshold: 50
